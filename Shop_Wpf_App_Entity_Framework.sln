@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_Wpf_App_Entity_Framework", "Shop_Wpf_App_Entity_Framework.csproj", "{0BCED95E-FD59-44E6-83A1-8B4ED6B466F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saving_InfoLog_ClassLibrary", "Saving_InfoLog_ClassLibrary\Saving_InfoLog_ClassLibrary.csproj", "{F207C5DD-1B08-443A-AE40-10539A3CF5A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BCED95E-FD59-44E6-83A1-8B4ED6B466F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BCED95E-FD59-44E6-83A1-8B4ED6B466F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BCED95E-FD59-44E6-83A1-8B4ED6B466F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BCED95E-FD59-44E6-83A1-8B4ED6B466F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F207C5DD-1B08-443A-AE40-10539A3CF5A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F207C5DD-1B08-443A-AE40-10539A3CF5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F207C5DD-1B08-443A-AE40-10539A3CF5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F207C5DD-1B08-443A-AE40-10539A3CF5A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96A10FCD-75C8-4DAC-9BC6-BDC7546BC931}
+	EndGlobalSection
+EndGlobal
