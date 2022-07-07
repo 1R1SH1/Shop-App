@@ -159,11 +159,9 @@
 
         <Popup x:Name="pDeleteClient" StaysOpen="False" Placement="Mouse"
                PopupAnimation="Scroll" AllowsTransparency="True">
-            <GroupBox Header="Удаление клиента" Width="200" Margin="10" Padding="10">
-                <StackPanel Width="150">
-                    <TextBlock>Id:</TextBlock>
-                    <TextBox x:Name="Id_Delete_txt"/>
-                    <Button Margin="0,10" Click="Button_Ok_DeleteClient">Удалить</Button>
+            <GroupBox Header="Удаление клиента" Width="230" Margin="10" Padding="10">
+                <StackPanel Width="180">
+                    <Button Margin="0,10" Click="Button_Ok_DeleteClient">Удалить выбранного клиента</Button>
                 </StackPanel>
             </GroupBox>
         </Popup>
@@ -209,33 +207,27 @@
 
         <Popup x:Name="pDeleteElectronicProduct" StaysOpen="False" Placement="Mouse"
                PopupAnimation="Scroll" AllowsTransparency="True">
-            <GroupBox Header="Удалить продукт" Width="200" Margin="10" Padding="10">
-                <StackPanel Width="150">
-                    <TextBlock>Id:</TextBlock>
-                    <TextBox x:Name="DeleteProductElectronic_txt"/>
-                    <Button Margin="0,10" Click="Button_Ok_DeleteElectronicProduct">Удалить</Button>
+            <GroupBox Header="Удалить продукт" Width="230" Margin="10" Padding="10">
+                <StackPanel Width="180">
+                    <Button Margin="0,10" Click="Button_Ok_DeleteElectronicProduct">Удалить выбранный продукт</Button>
                 </StackPanel>
             </GroupBox>
         </Popup>
 
         <Popup x:Name="pDeleteSpaceProduct" StaysOpen="False" Placement="Mouse"
                PopupAnimation="Scroll" AllowsTransparency="True">
-            <GroupBox Header="Удалить продукт" Width="200" Margin="10" Padding="10">
-                <StackPanel Width="150">
-                    <TextBlock>Id:</TextBlock>
-                    <TextBox x:Name="DeleteProductSpace_txt"/>
-                    <Button Margin="0,10" Click="Button_Ok_DeleteSpaceProduct">Удалить</Button>
+            <GroupBox Header="Удалить продукт" Width="230" Margin="10" Padding="10">
+                <StackPanel Width="180">
+                    <Button Margin="0,10" Click="Button_Ok_DeleteSpaceProduct">Удалить выбранный продукт</Button>
                 </StackPanel>
             </GroupBox>
         </Popup>
 
         <Popup x:Name="pDeleteFoodProduct" StaysOpen="False" Placement="Mouse"
                PopupAnimation="Scroll" AllowsTransparency="True">
-            <GroupBox Header="Удалить продукт" Width="200" Margin="10" Padding="10">
-                <StackPanel Width="150">
-                    <TextBlock>Id:</TextBlock>
-                    <TextBox x:Name="DeleteProductFood_txt"/>
-                    <Button Margin="0,10" Click="Button_Ok_DeleteFoodProduct">Удалить</Button>
+            <GroupBox Header="Удалить продукт" Width="230" Margin="10" Padding="10">
+                <StackPanel Width="180">
+                    <Button Margin="0,10" Click="Button_Ok_DeleteFoodProduct">Удалить выбранный продукт</Button>
                 </StackPanel>
             </GroupBox>
         </Popup>

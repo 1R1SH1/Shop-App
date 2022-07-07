@@ -144,21 +144,61 @@ namespace Shop_Wpf_App_Entity_Framework
 
         private void Button_BuyIt_Click(object sender, RoutedEventArgs e)
         {
-            var shopN = productsList.SelectedItem.ToString();
-            var shopC = productsList.SelectedItem.ToString();
-            var buyer = cSelectClient.SelectedItem.ToString();
-
-            Purchases purchases = new()
+            if (productsList.SelectedItem is ElectronicsProducts)
             {
-                ProductName = shopN,
-                ProductCode = shopC,
-                E_Mail = buyer,
-            };
+                var shopN = (productsList.SelectedItem as ElectronicsProducts).ProductName;
+                var shopC = (productsList.SelectedItem as ElectronicsProducts).ProductCode;
+                var buyer = (cSelectClient.SelectedItem as Clients).E_Mail;
 
-            context.Purchases.Add(purchases);
-            context.SaveChanges();
-            Transaction?.Invoke($"Товар {shopN} куплен клиентом {buyer}");
-            CleareTextBox();
+                Purchases purchases = new()
+                {
+                    ProductName = shopN.ToString(),
+                    ProductCode = shopC.ToString(),
+                    E_Mail = buyer.ToString()
+                };
+
+                context.Purchases.Add(purchases);
+                context.SaveChanges();
+                Transaction?.Invoke($"Товар {shopN} куплен клиентом {buyer}");
+                CleareTextBox();
+            }
+            if (productsList.SelectedItem is SpaceProducts)
+            {
+                var shopN = (productsList.SelectedItem as SpaceProducts).ProductName;
+                var shopC = (productsList.SelectedItem as SpaceProducts).ProductCode;
+                var buyer = (cSelectClient.SelectedItem as Clients).E_Mail;
+
+                Purchases purchases = new()
+                {
+                    ProductName = shopN.ToString(),
+                    ProductCode = shopC.ToString(),
+                    E_Mail = buyer.ToString()
+                };
+
+                context.Purchases.Add(purchases);
+                context.SaveChanges();
+                Transaction?.Invoke($"Товар {shopN} куплен клиентом {buyer}");
+                CleareTextBox();
+            }
+            if (productsList.SelectedItem is FoodsProducts)
+            {
+                var shopN = (productsList.SelectedItem as FoodsProducts).ProductName;
+                var shopC = (productsList.SelectedItem as FoodsProducts).ProductCode;
+                var buyer = (cSelectClient.SelectedItem as Clients).E_Mail;
+
+                Purchases purchases = new()
+                {
+                    ProductName = shopN.ToString(),
+                    ProductCode = shopC.ToString(),
+                    E_Mail = buyer.ToString()
+                };
+
+                context.Purchases.Add(purchases);
+                context.SaveChanges();
+                Transaction?.Invoke($"Товар {shopN} куплен клиентом {buyer}");
+                CleareTextBox();
+            }
+            pBuy.IsOpen = false;
         }
 
         private void Button_Ok_UpdateClientData(object sender, RoutedEventArgs e)
@@ -169,14 +209,15 @@ namespace Shop_Wpf_App_Entity_Framework
                               select m).Single();
             client.Phone = New_Phone_txt.Text;
             context.SaveChanges();
+            LoadClients();
             cSelectClient.Items.Refresh();
-            Transaction?.Invoke($"№ телефона клиента {client} изменен на '{New_Phone_txt.Text}'");
+            Transaction?.Invoke($"№ телефона клиента {name} изменен на '{New_Phone_txt.Text}'");
             CleareTextBox();
+            pUpdateClient.IsOpen = false;
         }
 
         private void Button_Ok_AddClient(object sender, RoutedEventArgs e)
         {
-
             Clients clients = new()
             {
                 Name = Name_txt.Text,
@@ -190,20 +231,23 @@ namespace Shop_Wpf_App_Entity_Framework
             context.SaveChanges();
             LoadClients();
             cSelectClient.Items.Refresh();
-            Transaction?.Invoke($"Клиент {Name_txt.Text} добавлен");
+            Transaction?.Invoke($"Клиент {Name_txt.Text} {SurName_txt.Text} {Patronymic_txt.Text} добавлен");
             CleareTextBox();
+            pAddClient.IsOpen = false;
         }
 
         private void Button_Ok_DeleteClient(object sender, RoutedEventArgs e)
         {
+            var clientName = (cSelectClient.SelectedItem as Clients).Name;
             int Id = (cSelectClient.SelectedItem as Clients).Id;
             var client = context.Client.Where(m => m.Id == Id).Single();
             context.Client.Remove(client);
             context.SaveChanges();
             LoadClients();
             cSelectClient.Items.Refresh();
-            Transaction?.Invoke($"Клиент {client} удалён");
+            Transaction?.Invoke($"Клиент {clientName} удалён");
             CleareTextBox();
+            pDeleteClient.IsOpen = false;
         }
 
         private void Button_Ok_AddElectronicProduct(object sender, RoutedEventArgs e)
@@ -219,6 +263,7 @@ namespace Shop_Wpf_App_Entity_Framework
             productsList.Items.Refresh();
             Transaction?.Invoke($"Товар {ElProductName_txt.Text} добавлен");
             CleareTextBox();
+            pAddElectronicProduct.IsOpen = false;
         }
 
         private void Button_Ok_AddSpaceProduct(object sender, RoutedEventArgs e)
@@ -232,8 +277,9 @@ namespace Shop_Wpf_App_Entity_Framework
             context.SpaceProducts.Add(spProducts);
             context.SaveChanges();
             productsList.Items.Refresh();
-            Transaction?.Invoke($"Товар {ElProductName_txt.Text} добавлен");
+            Transaction?.Invoke($"Товар {SpProductName_txt.Text} добавлен");
             CleareTextBox();
+            pAddSpaceProduct.IsOpen = false;
         }
 
         private void Button_Ok_AddFoodProduct(object sender, RoutedEventArgs e)
@@ -247,41 +293,48 @@ namespace Shop_Wpf_App_Entity_Framework
             context.FoodsProducts.Add(foProducts);
             context.SaveChanges();
             productsList.Items.Refresh();
-            Transaction?.Invoke($"Товар {ElProductName_txt.Text} добавлен");
+            Transaction?.Invoke($"Товар {FoProductName_txt.Text} добавлен");
             CleareTextBox();
+            pAddFoodProduct.IsOpen = false;
         }
 
         private void Button_Ok_DeleteElectronicProduct(object sender, RoutedEventArgs e)
         {
+            var pName = (productsList.SelectedItem as ElectronicsProducts).ProductName;
             int Id = (productsList.SelectedItem as ElectronicsProducts).Id;
             var product = context.ElectronicsProducts.Where(p => p.Id == Id).Single();
             context.ElectronicsProducts.Remove(product);
             context.SaveChanges();
             productsList.Items.Refresh();
-            Transaction?.Invoke($"Продукт {product} удалён");
+            Transaction?.Invoke($"Продукт {pName} удалён");
             CleareTextBox();
+            pDeleteElectronicProduct.IsOpen = false;
         }
 
         private void Button_Ok_DeleteSpaceProduct(object sender, RoutedEventArgs e)
         {
+            var pName = (productsList.SelectedItem as SpaceProducts).ProductName;
             int Id = (productsList.SelectedItem as SpaceProducts).Id;
             var product = context.SpaceProducts.Where(p => p.Id == Id).Single();
             context.SpaceProducts.Remove(product);
             context.SaveChanges();
             productsList.Items.Refresh();
-            Transaction?.Invoke($"Продукт {product} удалён");
+            Transaction?.Invoke($"Продукт {pName} удалён");
             CleareTextBox();
+            pDeleteSpaceProduct.IsOpen = false;
         }
 
         private void Button_Ok_DeleteFoodProduct(object sender, RoutedEventArgs e)
         {
+            var pName = (productsList.SelectedItem as FoodsProducts).ProductName;
             int Id = (productsList.SelectedItem as FoodsProducts).Id;
             var product = context.FoodsProducts.Where(p => p.Id == Id).Single();
             context.FoodsProducts.Remove(product);
             context.SaveChanges();
             productsList.Items.Refresh();
-            Transaction?.Invoke($"Продукт {product} удалён");
+            Transaction?.Invoke($"Продукт {pName} удалён");
             CleareTextBox();
+            pDeleteFoodProduct.IsOpen = false;
         }
 
         private void CleareTextBox()
@@ -291,14 +344,12 @@ namespace Shop_Wpf_App_Entity_Framework
             Patronymic_txt.Clear();
             Phone_txt.Clear();
             E_mail_txt.Clear();
-            Id_Delete_txt.Clear();
             ElProductNumber_txt.Clear();
             ElProductName_txt.Clear();
             SpProductNumber_txt.Clear();
             SpProductName_txt.Clear();
             FoProductNumber_txt.Clear();
             FoProductName_txt.Clear();
-            DeleteProductElectronic_txt.Clear();
             New_Phone_txt.Clear();
         }
     }
